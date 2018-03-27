@@ -86,3 +86,20 @@
         demo参考  IntegerSyncDemo
 
 3 jdk 并发包
+
+3.1.1 synchronized的功能扩展：重入锁 java.util.concurrent.locks.ReentrantLock--简单案例 ReenterLock，可重复获取多次，也必须释放多次
+    lock():获得锁，如果被占用，则等待
+    lockInterruptibly():获得所，但优先响应中断
+  
+        提供中断响应，解决死锁问题---IntLock.java
+        锁申请等待限时:tryLock(不加参数会立即返回):---TimeLock.java
+        公平锁：按时间先后顺序，不会产生饥饿，synchronized是非公平的，ReentrantLock(boolean fair)可以设置公平性
+
+3.1.2 重入锁的好搭档：condition条件--ReenterLockCondition.java
+
+
+
+
+
+
+
