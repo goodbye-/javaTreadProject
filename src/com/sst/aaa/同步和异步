@@ -99,6 +99,13 @@
 
 3.1.3 允许多个线程同时访问：信号量(Semaphore)  指定访问资源的个数
 
+3.1.4 ReadWriteLock 读写锁---解决两个读线程之间的等待问题 ----ReadWriteLockDemo.java
+
+3.1.5 倒计时--countdownlatch----线程直到倒计时结束才开始执行--CountDownLatchDemo.java
+
+3.1.6 循环栅栏---CyclicBarrer(int,runnable)---接收计数(类似于countdown)和结束后执行的线程---响应中断
+
+3.1.7 线程阻塞工具 ---LockSupport ---可以在线程内任何位置阻塞线程--核心方法park()---相应中断
 
 
 
