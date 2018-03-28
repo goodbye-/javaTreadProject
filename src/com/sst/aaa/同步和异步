@@ -107,8 +107,37 @@
 
 3.1.7 线程阻塞工具 ---LockSupport ---可以在线程内任何位置阻塞线程--核心方法park()---相应中断
 
+3.2 线程复用：线程池
+            3.2.1 --- ThreadPoolExecutor核心构造方法---任务队列
+                    shutdowm()并不立即结束，只是发送信号，但是不接收新线程
+3.2.8 在线城池中寻找堆栈 ---包装线程runnable，添加参数exception---TraceThreadPoolExecutor.java
 
+3.2.9 分而治之：fork/join框架---fork开辟新线程，join()等待新线程  jdk提供ForkJoinPool线程池
+        ForkJoinPool.submit(ForkJoinTask<T> task);
+        ForkJoinTask有两个重要子类：RecursiveAction(没有返回值)和RecursiveTask(有返回值)
 
+        demo---CountTask.java
+
+3.3 JDK的并发容器
+
+3.3.1 并发集合  copyonwriteArrayList等没听过的
+
+3.3.2 线程安全的HashMap
+    Collections.synchronizedMap(new HashMap)  ---类似于装饰器，对所有的map方法进行mutex对象的同步，性能不好
+    ConcurrentHashMap
+ 
+3.3.3 List的线程安全--Vector安全，ArrayList和LinkedList不安全
+    Collections.synchronizedList
+    
+3.3.4 高效读写的队列：ConcurrentLinkedQueue   
+
+3.3.5 高效读取：CopyOnWriteArrayList 
+
+3.3.6 数据共享通道：BlockingQueue---线程通信的一个接口 常见实现：ArrayBlockigQueue(有界队列)，LinkedBlockingQueue(无界队列)
+                BQ之所以适合作为数据共享的通道，关键在于blocking(阻塞)，put和take方法会用codition循环等待直到有能操作的元素
+    
+    
+3.3.7 随机数据结构：跳表(SkipList---ConcurrentSkipListMap实现),能够快速的查询，O(logn),有序的
 
 
 
