@@ -164,16 +164,32 @@
 
 4.3 人手一支笔：ThreadLocal   -----区分Thread ，ThreadLocal ，ThreadLocalMap(在Thread的变量)，弱引用
 
+4.3.3 对性能有何帮助---如果共享对象对于竞争的处理容易引起性能损失，需要考虑一下ThreadLocal
 
+4.4 无锁---锁是悲观的策略，无锁使用的是CAS
 
+4.4.1  CAS---比较交换
 
+4.4.2 无锁的线程安全整数：AtomicInteger--jdk7下自增是通过循环compareAndSet方法直到得到正确值，jdk8通过unsafe类调用native方法
+                                                    其他基本数据类型类似
 
+4.4.3  unsafe类---用户无法调用
 
+4.4.4 无锁对象引用：AtomicReference 
+        1.原子操作逻辑上的不足：如果另一个线程经过多次修改之后，数据变回期望值，而当前线程无法判断，当业务需求是我们不能改变对象值的时候，这个就有问题了
+          -----AtomicRefrenceDemo.java  --不是很明白这个例子,例子太傻逼了。。。
+          
+4.4.5 带有时间戳的对象引用：AtomicStampedReference ---内部除了维护一个对象值，还维护了时间戳，当对象修改的时候改变时间戳 ---AtomicStampedReferenceDemo.java                                       
 
+4.4.6 数组也能无锁：AtomicIntegerArray，AtomicLongArray,AtomicReferenceArray
 
+4.4.7 让普通变量也享受原子操作：AtomicIntegerFieldUpdater AtomicLongFieldUpdater AtomicReferenceFieldUpdater
+                         --------AtomicIntegerFieldUpdaterDemo.java
+                                    1.Updater只能修改可见范围内的变量(因为反射)
+                                    2.变量必须是volatile类型的
+                                    3.不支持static，因为cas操作会通过对象实例中的偏移量进行操作
 
-
-
+4.4.8 挑战无锁算法：无锁的Vector实现
 
 
 

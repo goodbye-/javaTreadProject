@@ -7,9 +7,15 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+/**
+ * @author shui
+ * 
+ * ThreadLocal比公用快20倍左右
+ *
+ */
 public class ThreadLocalDemo {
-    public static final int GE_COUNT = 10000000;
-    public static final int THREAD_COUT = 4;
+    public static final int GE_COUNT = 10000000; //每次线程要产生随机数的数量
+    public static final int THREAD_COUT = 4; //参与的线程数量
 
     static ExecutorService executorService = Executors.newFixedThreadPool(THREAD_COUT);
     public static Random random = new Random(123);
@@ -74,5 +80,6 @@ public class ThreadLocalDemo {
         }
         System.out.println(" 使用 ThreadLocal 包装 Random 实例:" + totalTime + "ms");
 
+        executorService.shutdown();
     }
 }
