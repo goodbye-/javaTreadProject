@@ -194,10 +194,33 @@
 5 并行模式与算法
 
 5.1 探讨单例模式
+5.1.1 饿汉式，应用场景不全：如果在初始化需要参数或者配置文件的参数，就不可以了
+5.1.2 双重锁验证：volitale在1.5之前并不能正确的禁止指令重排序，new Instance()方法有三个步骤，1，给 instance 分配内存
+                                                                             2调用 Singleton 的构造函数来初始化成员变量
+                                                                             3将 instance 对象指向分配的内存空间（执行完这步 instance 就为非 null 了）
+5.1.3 effective java推荐  内部类方式
+                public class Singleton {  
+                    private static class SingletonHolder {  
+                        private static final Singleton INSTANCE = new Singleton();  
+                    }  
+                    private Singleton (){}  
+                    public static final Singleton getInstance() {  
+                        return SingletonHolder.INSTANCE; 
+                    }  
+                }
 
+5.2 不变模式：
+                条件：
+                    对象创建后，其内部属性和数据不再发生任何变化
+                    对象需要被共享，被多线程频繁访问
+                实现：
+                    去除setter等所有可以修改属性的方法
+                    属性设置为private+final
+                    确保没有子类可以重载修改他的行为
+                    有一个可以创建完整对象的构造函数
+      java中的应用：String，Boolean等基本类型的包装类
 
-
-
+5.3 生产者-消费者模式
 
 
 
