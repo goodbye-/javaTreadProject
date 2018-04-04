@@ -1,0 +1,12 @@
+5.3生产者和消费者： 基于共享内存缓存区   ---customandproducer包的例子
+
+5.4.高效的生产者消费者实现，无锁(BlockingQueue) 使用锁和同步方法实现等待安全，使用CAS会高效，但是编码很麻烦，所以产生了框架Disruptor
+
+5.5 future模式 自己实现
+5.5.3 jdk中的future模式--通过callable实力构造FutureTask，然后使用excutorService.submit
+
+5.6 并行流水线
+
+5.10 NIO
+6. java8
+7.akka
