@@ -20,8 +20,9 @@ import java.util.regex.Pattern;
  */
 public class LeetCode implements Cloneable, Serializable {
     private static final long serialVersionUID = 1L;
+
     public static void main(String[] args) throws Exception {
-        System.out.println(bitSum(12345,123123));
+        System.out.println(bitSum(12345, 123123));
     }
     /*
      * @Override public TestCase clone() throws CloneNotSupportedException{
@@ -785,51 +786,64 @@ public class LeetCode implements Cloneable, Serializable {
         return false;
     }
 
-    /** 
-    * @author : sst HJ
-    * @date 创建时间：2017年12月8日 上午11:35:23 
-    * @version 1.0 
-    * @param root
-    * @return 
-    * @since   
-    * @方法说明：对称树
-    */
+    /**
+     * @author : sst HJ
+     * @date 创建时间：2017年12月8日 上午11:35:23
+     * @version 1.0
+     * @param root
+     * @return
+     * @since
+     * @方法说明：对称树
+     */
     public static boolean isSymmetric(TreeNode root) {
-        if(root == null){return false;}
+        if (root == null) {
+            return false;
+        }
         TreeNode left = root.left;
         TreeNode right = root.right;
-        if(left!=null && right!=null ){
-            if(left.val == right.val){
+        if (left != null && right != null) {
+            if (left.val == right.val) {
                 return isSymmetric(left) && isSymmetric(right);
-            }else{
+            } else {
                 return false;
             }
         }
-        if(left==null || right==null )return false;
+        if (left == null || right == null)
+            return false;
         return true;
     }
-    
-    /** 
-    * @author : sst HJ
-    * @date 创建时间：2018年4月3日 下午6:49:07 
-    * @version 1.0 
-    * @param a
-    * @param b
-    * @return 
-    * @since   
-    * @方法说明：不用+计算两个数之和
-    */
-    public static int bitSum(int a,int b){
-        if(b == 0){
+
+    /**
+     * @author : sst HJ
+     * @date 创建时间：2018年4月3日 下午6:49:07
+     * @version 1.0
+     * @param a
+     * @param b
+     * @return
+     * @since
+     * @方法说明：不用+计算两个数之和
+     */
+    public static int bitSum(int a, int b) {
+        if (b == 0) {
             return a;
         }
-        //不算进位
-        int a1 = a^b;
-        //一次进位
-        int b1 = (a&b) <<1;
-        
+        // 不算进位
+        int a1 = a ^ b;
+        // 一次进位
+        int b1 = (a & b) << 1;
+
         return bitSum(a1, b1);
-        
+
+    }
+
+    public int aplusb(int a, int b) {
+        while (b != 0) {
+            int _a = a ^ b;
+            int _b = (a & b) << 1;
+            a = _a;
+            b = _b;
+        }
+        return a;
     }
 
 }
